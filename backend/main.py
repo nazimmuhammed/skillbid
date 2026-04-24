@@ -1,7 +1,15 @@
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from database import init_db
-from routes import router
+import traceback
+import sys
+
+try:
+    from fastapi import FastAPI
+    from fastapi.middleware.cors import CORSMiddleware
+    from database import init_db
+    from routes import router
+except Exception as e:
+    print("IMPORT ERROR:", e)
+    traceback.print_exc()
+    sys.exit(1)
 
 app = FastAPI(title="SkillBid API")
 
