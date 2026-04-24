@@ -1,8 +1,0 @@
-fastapi
-uvicorn
-sqlalchemy
-groq
-httpx
-python-dotenv
-cryptography
-google-genai
