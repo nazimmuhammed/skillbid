@@ -1,14 +1,11 @@
 from groq import Groq
 import os
 import random
-from dotenv import load_dotenv
-
-load_dotenv()
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 class SummarizerAgent:
     def __init__(self):
         self.name = "summarizer"
+        self.client = Groq(api_key=os.getenv("GROQ_API_KEY"))
     
     def get_bid(self, task_description: str) -> float:
         if "summarize" in task_description.lower() or "summary" in task_description.lower():
@@ -16,7 +13,7 @@ class SummarizerAgent:
         return round(random.uniform(0.004, 0.007), 4)
     
     def execute(self, task_description: str) -> str:
-        response = client.chat.completions.create(
+        response = self.client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[
                 {"role": "system", "content": "You are a specialized summarization agent. Be concise and clear."},
