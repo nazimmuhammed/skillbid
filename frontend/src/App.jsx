@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-const API = "http://localhost:8000"
-
+const API = "https://skillbid-backend-5xnb.onrender.com"
 export default function App() {
   const [task, setTask] = useState("")
   const [loading, setLoading] = useState(false)
